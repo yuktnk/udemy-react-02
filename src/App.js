@@ -1,10 +1,5 @@
-import { BrowserRouter, Link, Switch, Route } from "react-router-dom";
-
-import { Home } from "./Home";
-import { Page01 } from "./Page01";
-import { Page01DetailA } from "./Page01DetailA";
-import { Page01DetailB } from "./Page01DetailB";
-import { Page02 } from "./Page02";
+import { BrowserRouter, Link } from "react-router-dom";
+import { Router } from "./router/Router";
 import "./styles.css";
 
 export default function App() {
@@ -19,30 +14,7 @@ export default function App() {
         {/* <Home />
         <Page02 /> */}
       </div>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route
-          path="/page01"
-          render={({ match: { url } }) => (
-            <Switch>
-              <Route exact path={url}>
-                <Page01 />
-              </Route>
-              <Route exact path={`${url}/detailA`}>
-                <Page01DetailA />
-              </Route>
-              <Route exact path={`${url}/detailB`}>
-                <Page01DetailB />
-              </Route>
-            </Switch>
-          )}
-        />
-        <Route path="/page02">
-          <Page02 />
-        </Route>
-      </Switch>
+      <Router />
     </BrowserRouter>
   );
 }
